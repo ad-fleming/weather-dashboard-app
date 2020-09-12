@@ -11,10 +11,24 @@ var searchContainerEl = $(".searchContainerEl");
 var citySearchBar = $("#citySearchBar");
 var searchCityBtn = $("#searchCityBtn");
 var dataDump = $(".temporaryDataDump");
-var city = $();
-var currentForecastQuery = "http"
-var fiveDayForecastQuery = "http"
 // 2)Create a variable for building url query string
+// ====================== On search click ======================
+// ============================================================
+searchCityBtn.on("click", function(event){
+    event.preventDefault();
+    var city = citySearchBar.val().trim();
+    var currentForecastQuery = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + apiKey;
+    $.ajax({
+        Method: "GET",
+        url: currentForecastQuery,
+    }).then(function(response){
+        console.log(response);
+        dataDump.text(JSON.stringify(response));
+    })
+
+}); //<----- This is the end of the click event 
+
+
 // 3) set a variable for the city name equal to a data-name attribute which is assigned on click and equal to the city the user enters
 // 4) Write a function that on user click of the search button  uses ajax to make a query search to the API
     // 4.1) if the search is empty on click return, otherwise it should empty() the search display areas of any existing information
