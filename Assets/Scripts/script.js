@@ -10,14 +10,20 @@ var targetDivEl = $(".targetDiv");
 var searchContainerEl = $(".searchContainerEl");
 var citySearchBar = $("#citySearchBar");
 var searchCityBtn = $("#searchCityBtn");
-var dataDump = $(".temporaryDataDump");
+var forecastBox = $(".forecastBox");
 var cityNameEl = $(".cityDisplay");
+var fiveCastTitle = $(".fivecastTitle");
 var temperatureEl = $(".temp");
 var humidityEl = $(".humidity");
 var windSpeedEl = $(".windSpeed");
 var uvIndexEl = $(".uvIndex");
 var day1El = $("#day1");
+var currentDate = moment().format('MMM Do');
+var navDateEl = $("#navDate");
+navDateEl.text("Current Date: " + currentDate);
 // 2)Create a variable for building url query string
+
+
 // ====================== On search click ======================
 // ============================================================
 searchCityBtn.on("click", function(event){
@@ -36,7 +42,7 @@ searchCityBtn.on("click", function(event){
         var cityLat = response.coord.lat;
         var cityLon = response.coord.lon;
         var cityLocation = "lat=" + cityLat + "&lon=" + cityLon + "&";
-        cityNameEl.html("<h1>" + response.name + " Weather Details</h1>");
+        cityNameEl.html("<h1>Today in " + response.name + ":</h1>");
         temperatureEl.text("Current Temp: " + response.main.temp + " °F");
         humidityEl.text("Humidity: " + response.main.humidity + "%");
         windSpeedEl.text("Wind Speed: " + response.wind.speed +  " MPH");
@@ -47,23 +53,33 @@ searchCityBtn.on("click", function(event){
         })
         .then(function(response){
             console.log(response);
+            forecastBox.attr("class", "forecastDay");
+            fiveCastTitle.removeClass("hide");
             for( i = 0; i < 5; i ++){
+                // TODO: Populate "title" divs using moment js (create a 'now' moment in global scope and set the div to have a text moment().add(1, "days).format("M,DD,YYYY")))
+                var referenceDate = moment().add(i, 'days').format('MMM Do');
+                var addNumber=i;
+
+                var forecastDate = $('<div>');
+                forecastDate.attr("class", "text-center mt-3 mb-1")
+                forecastDate.text(referenceDate);
                 var forecastIcon = $("<img>");
                 forecastIcon.attr("src", "http://openweathermap.org/img/wn/" + response.daily[i].weather[0].icon + "@2x.png");
                 forecastIcon.attr("class", "forecastIcon mt-1 mb-1");
                 var forecastTemp = $('<div>');
-                forecastTemp.attr("class", "mt-1 mb-1");
+                forecastTemp.attr("class", "text-center mt-1 mb-1");
                 forecastTemp.text("Temp: " + response.daily[i].temp.day +"°F");
                 var forecastHumidity =  $("<div>");
+                forecastHumidity.attr("class", "text-center mt-1 mb-1");
                 forecastHumidity.text("Humidity: " + response.daily[i].humidity + "%");
-                $("#" + i).append(forecastIcon,forecastTemp,forecastHumidity);
+                $("#" + i).append(forecastDate,forecastIcon,forecastTemp,forecastHumidity);
             }
         })
     });
 
   
     
-}); //<----- This is the end of the click event 
+}); //<----- This is the end of the Search Button click event 
 
 
 // 3) set a variable for the city name equal to a data-name attribute which is assigned on click and equal to the city the user enters

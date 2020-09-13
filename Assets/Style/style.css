@@ -4,6 +4,7 @@ h1{
 
 .forecastDay{
     height: auto;
+    width: 15%;
     border: 1px solid black;
     border-radius: 3px;
     background-color: skyblue;
@@ -15,4 +16,8 @@ h1{
 .forecastIcon{
     width: 40%;
     height:40%;
+}
+
+.hide{
+    display: none;
 }

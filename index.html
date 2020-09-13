@@ -14,9 +14,11 @@
     </head>
     <body>
         <nav>
-            <h1 class="text-center">Weather Dashboard</h1>
+
+            <h1 class="text-center" >Weather Dashboard</h1>
+            <h2 class="text-center "id="navDate"></h2>
         </nav>
-        <main class="container m-0">
+        <main class="container col-12 m-0">
             <div class="row" id="row1">
                 <div class="col-md-3 card searchContainerEl">
                     <h1>City Search</h1>
@@ -50,12 +52,13 @@
             <!-- This is the Second Row of content that holds the 5 day forecast -->
             <div class="row justify-content-end" id="row2">
                 <div class="col-md-9 mr-0 container card resultContainerEl">
-                    <div class="temporaryDataDump row justify-content-around fivecastEl" id="fivecastEl">  
-                            <div class="col-2 mb-2 forecastDay" id="0">Test</div>
-                            <div class="col-2 mb-2 forecastDay" id="1">Test</div>
-                            <div class="col-2 mb-2 forecastDay" id="2">Test</div>
-                            <div class="col-2 mb-2 forecastDay" id="3">Test</div>
-                            <div class="col-2 mb-2 forecastDay" id="4">Test</div> 
+                    <h4 class="fivecastTitle text-center hide">Your 5 day forecast:</h4>
+                    <div class="temporaryDataDump row justify-content-around align-items-center fivecastEl" id="fivecastEl">  
+                            <div class="col-2 mb-2 forecastBox" id="0"></div>
+                            <div class="col-2 mb-2 forecastBox" id="1"></div>
+                            <div class="col-2 mb-2 forecastBox" id="2"></div>
+                            <div class="col-2 mb-2 forecastBox" id="3"></div>
+                            <div class="col-2 mb-2 forecastBox" id="4"></div> 
                             
                     </div>
                 </div>
