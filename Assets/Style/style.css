@@ -1,3 +1,18 @@
 h1{
     color:red;
 }
+
+.forecastDay{
+    height: auto;
+    border: 1px solid black;
+    border-radius: 3px;
+    background-color: skyblue;
+    color: white;
+    margin: 10px 5px;
+
+}
+
+.forecastIcon{
+    width: 40%;
+    height:40%;
+}
