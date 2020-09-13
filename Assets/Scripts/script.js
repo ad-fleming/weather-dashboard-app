@@ -55,11 +55,10 @@ searchCityBtn.on("click", function(event){
             console.log(response);
             forecastBox.attr("class", "forecastDay");
             fiveCastTitle.removeClass("hide");
+            forecastBox.empty();
             for( i = 0; i < 5; i ++){
                 // TODO: Populate "title" divs using moment js (create a 'now' moment in global scope and set the div to have a text moment().add(1, "days).format("M,DD,YYYY")))
                 var referenceDate = moment().add(i, 'days').format('MMM Do');
-                var addNumber=i;
-
                 var forecastDate = $('<div>');
                 forecastDate.attr("class", "text-center mt-3 mb-1")
                 forecastDate.text(referenceDate);
