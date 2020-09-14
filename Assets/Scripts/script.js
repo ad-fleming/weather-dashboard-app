@@ -82,6 +82,18 @@ searchCityBtn.on("click", function(event){
                 var forecastHumidity =  $("<div>");
                 forecastHumidity.attr("class", "text-center mt-1 mb-1");
                 forecastHumidity.text("Humidity: " + response.daily[i].humidity + "%");
+                uvIndexEl.text("UV Index: " + response.current.uvi);
+                if(response.current.uvi < 3){
+                    uvIndexEl.att("style", "background-color: green;")
+                }else if(response.current.uvi > 3 && response.current.uvi < 6){
+                    uvIndexEl.attr("style", "background-color: yellow;")
+                }else if(response.current.uvi > 5 && response.current.uvi < 8){
+                    uvIndexEl.attr("style", "background-color: orange;")
+                }else if(response.current.uvi > 7 && response.current.uvi < 11){
+                    uvIndexEl.attr("style", "background-color:red;");
+                } else{ 
+                    uvIndexEl.attr("style", "background-color: violet;")
+                }
                 $("#" + i).append(forecastDate,forecastIcon,forecastTemp,forecastHumidity);
             }
         })
@@ -91,7 +103,8 @@ searchCityBtn.on("click", function(event){
     
 }); //<----- This is the end of the Search Button click event 
 
-// TODO: Figure out how to set and retrieve storage
+// ======================== On click of any of the saved city searches =======================
+// =======================================================================================
 $(document).on("click", ".savedCity", function(event){
     var storageKey = $(this).text().toLowerCase();
     var storedCity = localStorage.getItem(storageKey);
@@ -133,6 +146,18 @@ $(document).on("click", ".savedCity", function(event){
             var forecastHumidity =  $("<div>");
             forecastHumidity.attr("class", "text-center mt-1 mb-1");
             forecastHumidity.text("Humidity: " + response.daily[i].humidity + "%");
+            uvIndexEl.text("UV Index: " + response.current.uvi);
+            if(response.current.uvi < 3){
+                uvIndexEl.att("style", "background-color: green;")
+            }else if(response.current.uvi > 3 && response.current.uvi < 6){
+                uvIndexEl.attr("style", "background-color: yellow;")
+            }else if(response.current.uvi > 5 && response.current.uvi < 8){
+                uvIndexEl.attr("style", "background-color: orange;")
+            }else if(response.current.uvi > 7 && response.current.uvi < 11){
+                uvIndexEl.attr("style", "background-color:red;");
+            } else{ 
+                uvIndexEl.attr("style", "background-color: violet;")
+            }
             $("#" + i).append(forecastDate,forecastIcon,forecastTemp,forecastHumidity);
         }
     })
