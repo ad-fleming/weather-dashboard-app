@@ -9,6 +9,7 @@ var apiKey = "a114e9c8bd3f8f06caf27cdcb845acfd";
 var targetDivEl = $(".targetDiv");
 var searchContainerEl = $(".searchContainerEl");
 var citySearchBar = $("#citySearchBar");
+var savedSearchEl = $("#savedSearchEl");
 var searchCityBtn = $("#searchCityBtn");
 var forecastBox = $(".forecastBox");
 var cityNameEl = $(".cityDisplay");
@@ -21,7 +22,10 @@ var day1El = $("#day1");
 var currentDate = moment().format('MMM Do');
 var navDateEl = $("#navDate");
 navDateEl.text("Current Date: " + currentDate);
+
 // 2)Create a variable for building url query string
+
+displaySavedCities();
 
 
 // ====================== On search click ======================
@@ -42,14 +46,22 @@ searchCityBtn.on("click", function(event){
         var cityLat = response.coord.lat;
         var cityLon = response.coord.lon;
         var cityLocation = "lat=" + cityLat + "&lon=" + cityLon + "&";
+        var fiveCastURL = "https://api.openweathermap.org/data/2.5/onecall?" + cityLocation + "exclude=hourly,minutely&units=imperial&appid=" + apiKey
         cityNameEl.html("<h1>Today in " + response.name + ":</h1>");
         temperatureEl.text("Current Temp: " + response.main.temp + " °F");
         humidityEl.text("Humidity: " + response.main.humidity + "%");
         windSpeedEl.text("Wind Speed: " + response.wind.speed +  " MPH");
-        
+        // TODO:set data to local storage with a key equal to search name with a value of an array containing both query urls
+        localStorage.setItem(city.toLowerCase(), city);
+        console.log(localStorage);
+        var savedSearchDisplay = $('<div>');
+        savedSearchDisplay.attr("class", "savedCity row text-center my-1")
+        savedSearchDisplay.html("<span>" + localStorage.getItem(city).toUpperCase() + "</span>");
+        savedSearchEl.append(savedSearchDisplay);
+    
         $.ajax({
             Method:"GET",
-            url:"https://api.openweathermap.org/data/2.5/onecall?" + cityLocation + "exclude=hourly,minutely&units=imperial&appid=" + apiKey
+            url:fiveCastURL
         })
         .then(function(response){
             console.log(response);
@@ -57,7 +69,6 @@ searchCityBtn.on("click", function(event){
             fiveCastTitle.removeClass("hide");
             forecastBox.empty();
             for( i = 0; i < 5; i ++){
-                // TODO: Populate "title" divs using moment js (create a 'now' moment in global scope and set the div to have a text moment().add(1, "days).format("M,DD,YYYY")))
                 var referenceDate = moment().add(i, 'days').format('MMM Do');
                 var forecastDate = $('<div>');
                 forecastDate.attr("class", "text-center mt-3 mb-1")
@@ -79,6 +90,82 @@ searchCityBtn.on("click", function(event){
   
     
 }); //<----- This is the end of the Search Button click event 
+
+// TODO: Figure out how to set and retrieve storage
+$(document).on("click", ".savedCity", function(event){
+    var storageKey = $(this).text().toLowerCase();
+    var storedCity = localStorage.getItem(storageKey);
+    console.log(storedCity);
+    var storedCityCurrentURL = "https://api.openweathermap.org/data/2.5/weather?q=" + storedCity + "&units=imperial&appid=" + apiKey
+
+    $.ajax({
+        Method: "GET",
+        url: storedCityCurrentURL,
+    })
+    .then(function(response){
+        console.log(response);
+        var storedCityLat = response.coord.lat;
+        var storedCityLon = response.coord.lon;
+        var storedCityLocation = "lat=" + storedCityLat + "&lon=" + storedCityLon + "&";
+        var storedFiveCastURL = "https://api.openweathermap.org/data/2.5/onecall?" + storedCityLocation + "exclude=hourly,minutely&units=imperial&appid=" + apiKey
+        cityNameEl.html("<h1>Today in " + response.name + ":</h1>");
+        temperatureEl.text("Current Temp: " + response.main.temp + " °F");
+        humidityEl.text("Humidity: " + response.main.humidity + "%");
+        windSpeedEl.text("Wind Speed: " + response.wind.speed +  " MPH");
+    $.ajax({
+        method:"GET",
+        url:storedFiveCastURL
+    }).then(function(response){
+        console.log(response);
+        forecastBox.empty();
+        forecastBox.removeClass("hide");
+        for(var i = 0; i < 5; i++){
+            var referenceDate = moment().add(i, 'days').format('MMM Do');
+            var forecastDate = $('<div>');
+            forecastDate.attr("class", "text-center mt-3 mb-1")
+            forecastDate.text(referenceDate);
+            var forecastIcon = $("<img>");
+            forecastIcon.attr("src", "http://openweathermap.org/img/wn/" + response.daily[i].weather[0].icon + "@2x.png");
+            forecastIcon.attr("class", "forecastIcon mt-1 mb-1");
+            var forecastTemp = $('<div>');
+            forecastTemp.attr("class", "text-center mt-1 mb-1");
+            forecastTemp.text("Temp: " + response.daily[i].temp.day +"°F");
+            var forecastHumidity =  $("<div>");
+            forecastHumidity.attr("class", "text-center mt-1 mb-1");
+            forecastHumidity.text("Humidity: " + response.daily[i].humidity + "%");
+            $("#" + i).append(forecastDate,forecastIcon,forecastTemp,forecastHumidity);
+        }
+    })
+    
+
+    })//<------this is the end of the promise method 
+}) //<-------- This is the end of the savedCity click event
+
+    function displaySavedCities(){
+        var storageKeys = Object.keys(localStorage);
+        console.log(storageKeys);
+        for(var i = 0; i < storageKeys.length; i++){
+            if(storageKeys === undefined){
+                return
+            }else{
+                forecastBox.addClass("forecastDay");
+                var newSavedCityItem = localStorage.getItem(storageKeys[i]).toUpperCase();
+                var savedCityDisplayEl = $('<div>')
+                savedCityDisplayEl.attr("class", "savedCity row text-center my-1")
+                savedCityDisplayEl.html("<span>" + newSavedCityItem + "</span>");
+                savedSearchEl.append(savedCityDisplayEl);
+            }
+        }
+    };//<----------- this is the end of the displayedSavedCities
+// ====================== Functionality to save each url to a key equal to the input on click of the search button
+    
+
+// 
+
+
+
+
+
 
 
 // 3) set a variable for the city name equal to a data-name attribute which is assigned on click and equal to the city the user enters

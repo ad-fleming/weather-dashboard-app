@@ -21,3 +21,7 @@ h1{
 .hide{
     display: none;
 }
+
+.savedSearchEl span:hover{
+    color:red;
+}
