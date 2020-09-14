@@ -25,6 +25,7 @@ navDateEl.text("Current Date: " + currentDate);
 
 // 2)Create a variable for building url query string
 
+
 displaySavedCities();
 
 
@@ -51,7 +52,6 @@ searchCityBtn.on("click", function(event){
         temperatureEl.text("Current Temp: " + response.main.temp + " °F");
         humidityEl.text("Humidity: " + response.main.humidity + "%");
         windSpeedEl.text("Wind Speed: " + response.wind.speed +  " MPH");
-        // TODO:set data to local storage with a key equal to search name with a value of an array containing both query urls
         localStorage.setItem(city.toLowerCase(), city);
         console.log(localStorage);
         var savedSearchDisplay = $('<div>');
@@ -148,6 +148,7 @@ $(document).on("click", ".savedCity", function(event){
             if(storageKeys === undefined){
                 return
             }else{
+                
                 forecastBox.addClass("forecastDay");
                 var newSavedCityItem = localStorage.getItem(storageKeys[i]).toUpperCase();
                 var savedCityDisplayEl = $('<div>')
