@@ -1,5 +1,13 @@
+body{
+    background-image: url(https://images.unsplash.com/photo-1530908295418-a12e326966ba?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1834&q=80);
+}
+
 h1{
-    color:red;
+    color:rgb(77,96,101);
+}
+
+.searchContainerEl, .resultContainerEl {
+    background-color:rgba(77,96,101,.2);
 }
 
 .forecastDay{
@@ -24,4 +32,10 @@ h1{
 
 .savedSearchEl span:hover{
     color:red;
+}
+
+.uvIndex{
+    width: 125px;
+    height: auto;
+    padding-right: 2px;;
 }
