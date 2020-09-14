@@ -26,15 +26,15 @@ navDateEl.text("Current Date: " + currentDate);
 // 2)Create a variable for building url query string
 
 
-displaySavedCities();
 
+    displaySavedCities();
 
 // ====================== On search click ======================
 // ============================================================
 searchCityBtn.on("click", function(event){
     event.preventDefault();
-    var city = citySearchBar.val().trim();
-    var currentForecastQuery = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + apiKey
+    var city = citySearchBar.val().trim()
+    var currentForecastQuery = "https://api.openweathermap.org/data/2.5/weather?q=" + city.toLowerCase() + "&units=imperial&appid=" + apiKey
     $.ajax({
         Method: "GET",
         url: currentForecastQuery,
@@ -52,15 +52,11 @@ searchCityBtn.on("click", function(event){
         temperatureEl.text("Current Temp: " + response.main.temp + " °F");
         humidityEl.text("Humidity: " + response.main.humidity + "%");
         windSpeedEl.text("Wind Speed: " + response.wind.speed +  " MPH");
-        localStorage.setItem(city.toLowerCase(), city);
+        localStorage.setItem(city.toLowerCase(), city.toLowerCase());
+        displaySavedCities();
         console.log(localStorage);
-        var savedSearchDisplay = $('<div>');
-        savedSearchDisplay.attr("class", "savedCity row text-center my-1")
-        savedSearchDisplay.html("<span>" + localStorage.getItem(city).toUpperCase() + "</span>");
-        savedSearchEl.append(savedSearchDisplay);
-    
         $.ajax({
-            Method:"GET",
+            method:"GET",
             url:fiveCastURL
         })
         .then(function(response){
@@ -150,7 +146,7 @@ $(document).on("click", ".savedCity", function(event){
             if(response.current.uvi < 3){
                 uvIndexEl.att("style", "background-color: green;")
             }else if(response.current.uvi > 3 && response.current.uvi < 6){
-                uvIndexEl.attr("style", "background-color: yellow; color: black;")
+                uvIndexEl.attr("style", "background-color: yellow;")
             }else if(response.current.uvi > 5 && response.current.uvi < 8){
                 uvIndexEl.attr("style", "background-color: orange;")
             }else if(response.current.uvi > 7 && response.current.uvi < 11){
@@ -166,22 +162,25 @@ $(document).on("click", ".savedCity", function(event){
     })//<------this is the end of the promise method 
 }) //<-------- This is the end of the savedCity click event
 
+
+
     function displaySavedCities(){
+        savedSearchEl.empty();
         var storageKeys = Object.keys(localStorage);
         console.log(storageKeys);
-        for(var i = 0; i < storageKeys.length; i++){
-            if(storageKeys === undefined){
-                return
-            }else{
-                
-                forecastBox.addClass("forecastDay");
-                var newSavedCityItem = localStorage.getItem(storageKeys[i]).toUpperCase();
-                var savedCityDisplayEl = $('<div>')
-                savedCityDisplayEl.attr("class", "savedCity row text-center my-1")
-                savedCityDisplayEl.html("<span>" + newSavedCityItem + "</span>");
-                savedSearchEl.append(savedCityDisplayEl);
+        if(!storageKeys){
+            return
+        }else{
+            for(var i = 0; i < storageKeys.length; i++){
+
+                    forecastBox.addClass("forecastDay");
+                    var newSavedCityItem = localStorage.getItem(storageKeys[i]).toUpperCase();
+                    var savedCityDisplayEl = $('<div>')
+                    savedCityDisplayEl.attr("class", "savedCity row text-center my-1")
+                    savedCityDisplayEl.html("<span>" + newSavedCityItem + "</span>");
+                    savedSearchEl.append(savedCityDisplayEl);
             }
-        }
+        } 
     };//<----------- this is the end of the displayedSavedCities
 // ====================== Functionality to save each url to a key equal to the input on click of the search button
     
