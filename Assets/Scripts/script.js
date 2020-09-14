@@ -150,7 +150,7 @@ $(document).on("click", ".savedCity", function(event){
             if(response.current.uvi < 3){
                 uvIndexEl.att("style", "background-color: green;")
             }else if(response.current.uvi > 3 && response.current.uvi < 6){
-                uvIndexEl.attr("style", "background-color: yellow;")
+                uvIndexEl.attr("style", "background-color: yellow; color: black;")
             }else if(response.current.uvi > 5 && response.current.uvi < 8){
                 uvIndexEl.attr("style", "background-color: orange;")
             }else if(response.current.uvi > 7 && response.current.uvi < 11){
