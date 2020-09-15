@@ -48,7 +48,7 @@ THEN I am presented with the last searched city forecast -->
 ![Mobile Still](Assets/Images/mobile-still.png)
 
 #### Demo
-![Demo](Assets/Images/Weather Dashboard.gif)
+![Demo](Assets/Images/weather-dash.gif)
 
 ## Credits
 
