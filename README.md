@@ -33,8 +33,8 @@ THEN I am presented with the last searched city forecast -->
 ## Links
 
 #### Webpage
-http://ad-fleming.github.io/weather-dashboard-app/
+https://ad-fleming.github.io/weather-dashboard-app/
 
 #### Repository
 
-http://github.com/ad-fleming/weather-dashboard-app
+https://github.com/ad-fleming/weather-dashboard-app
