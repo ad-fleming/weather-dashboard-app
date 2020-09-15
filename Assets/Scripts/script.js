@@ -11,6 +11,7 @@ var searchContainerEl = $(".searchContainerEl");
 var citySearchBar = $("#citySearchBar");
 var savedSearchEl = $("#savedSearchEl");
 var searchCityBtn = $("#searchCityBtn");
+var clearBtn = $("#searchClearBtn");
 var forecastBox = $(".forecastBox");
 var cityNameEl = $(".cityDisplay");
 var fiveCastTitle = $(".fivecastTitle");
@@ -164,7 +165,7 @@ $(document).on("click", ".savedCity", function(event){
 
 
 
-    function displaySavedCities(){
+    function displaySavedCities(storagekey){
         savedSearchEl.empty();
         var storageKeys = Object.keys(localStorage);
         console.log(storageKeys);
@@ -185,8 +186,10 @@ $(document).on("click", ".savedCity", function(event){
 // ====================== Functionality to save each url to a key equal to the input on click of the search button
     
 
-// 
-
+clearBtn.on("click", function(){
+    savedSearchEl.empty();
+    localStorage.clear();
+})
 
 
 
