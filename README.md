@@ -1,8 +1,14 @@
 # weather-dashboard-app
+This project combines the skills and techniques that we incorporated into our previous assignments in order to produce a functioning weather dashboard application. 
 
-Developers are often tasked with retrieving data from another application's API and using it in the context of their own. Third-party APIs allow developers to access their data and functionality by making requests with specific parameters to a URL. Your challenge is to build a weather dashboard that will run in the browser and feature dynamically updated HTML and CSS.
+In order to successfully complete this project, we needed to employ skills that we've been honing in __local storage__, __ajax calls__, __3rd party API__ and __DOM manipulation__. 
 
-Use the [OpenWeather API](https://openweathermap.org/api) to retrieve weather data for cities. The documentation includes a section called "How to start" that will provide basic setup and usage instructions. Use `localStorage` to store any persistent data.
+This was a challenging and rewarding project that allowed us to explore all of the above in attempts to make something useful to its users. 
+
+In order to successfully display weather data, we were required build API queries based on user-input and make a request to  a new API : [OpenWeather](https://openweathermap.org/api). 
+
+Please find our User Story and Acceptance Criteria below.
+
 
 ## User Story
 
@@ -30,11 +36,43 @@ WHEN I open the weather dashboard
 THEN I am presented with the last searched city forecast -->
 ```
 
+## Images and Demo
+
+#### Provided-Example
+![Provided Example](Assets/Images/06-server-side-apis-homework-demo.png)
+
+#### Home Screen Still
+![Home Screen Still](Assets/Images/home-screen-still.png)
+
+#### Mobile Still
+![Mobile Still](Assets/Images/mobile-still.png)
+
+#### Demo
+![Weather Dashboard Demo](Assets/Images/Weather Dashboard.gif)
+
+## Credits
+
+I completed this project with the collaboration of fellow classmates and following the critical review of my Georgia Tech Coding Boot Camp tutor. 
+
+Additionally, I referenced the following:
+
+#### OpenWeather
+https://openweathermap.org/api
+
+#### MomentJS
+https://momentjs.com/
+
+#### MDN
+https://developer.mozilla.org/en-US/
+
+### W3schools
+https://www.w3schools.com/
+
+
 ## Links
 
 #### Webpage
 https://ad-fleming.github.io/weather-dashboard-app/
 
 #### Repository
-
 https://github.com/ad-fleming/weather-dashboard-app
