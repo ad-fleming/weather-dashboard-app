@@ -43,11 +43,11 @@ THEN I am presented with the last searched city forecast -->
 
 #### Home Screen Still
 ![Home Screen Still](Assets/Images/home-screen-still.png)
-<img src="Assets/Images/home-screen-still.png" alt="Home screen still" height="375" width="150" ></a>
+<img src="Assets/Images/home-screen-still.png" alt="Home screen still" height="375" width="375" ></a>
 
 
 #### Mobile Still
-<img src="Assets/Images/mobile-still.png" alt="Mobile  still" height="375" width="150" >
+<img src="Assets/Images/mobile-still.png" alt="Mobile  still" height="375" width="175" >
 
 #### Demo
 ![Demo](Assets/Images/weather-dash.gif)
