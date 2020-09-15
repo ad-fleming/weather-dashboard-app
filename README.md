@@ -42,7 +42,6 @@ THEN I am presented with the last searched city forecast -->
 ![Provided Example](Assets/Images/06-server-side-apis-homework-demo.png)
 
 #### Home Screen Still
-![Home Screen Still](Assets/Images/home-screen-still.png)
 <img src="Assets/Images/home-screen-still.png" alt="Home screen still">
 
 
