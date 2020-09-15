@@ -62,7 +62,8 @@ searchCityBtn.on("click", function(event){
         })
         .then(function(response){
             console.log(response);
-            forecastBox.attr("class", "forecastDay");
+            forecastBox.empty();
+            forecastBox.attr("class", " col-12 col-sm-4 col-md-2 mb-2 forecastDay");
             fiveCastTitle.removeClass("hide");
             forecastBox.empty();
             for( i = 0; i < 5; i ++){
