@@ -24,10 +24,10 @@
                     <h1>City Search</h1>
                     <form class="card-head" id="citySearchForm">
                         <!-- The value of this input will be used to make an AJAX call -->
-                        <input class="in-line-block" type="text" id="citySearchBar" placeholder="Enter a City Name">
+                        <input class="in-line-block my-2" type="text" id="citySearchBar" placeholder="Enter a City Name">
                         <!-- This button will be used to trigger the ajax call and dynamically render results -->
-                        <input class="btn btn-sm btn-dark in-line-block" id="searchCityBtn"  type="submit" value="Search City">
-                        <input class="btn btn-sm btn-dark" id="searchClearBtn"  type="submit" value="Clear History">
+                        <input class="btn btn-sm my-2 btn-dark in-line-block" id="searchCityBtn"  type="submit" value="Search City">
+                        <input class="btn btn-sm my-2 btn-dark" id="searchClearBtn"  type="submit" value="Clear History">
                     </form>
                     <div class="card-body savedSearchEl" id="savedSearchEl">
                         <!-- This is where city searches will be saved -->
@@ -52,11 +52,11 @@
                 <div class="col-md-9 mr-0 container justify-content-center card resultContainerEl">
                     <h4 class="fivecastTitle text-center hide">Your 5 day forecast:</h4>
                     <div class="temporaryDataDump row justify-content-around align-items-center fivecastEl" id="fivecastEl">  
-                            <div class="col-2 mb-2 hide forecastBox" id="0"></div>
-                            <div class="col-2 mb-2 hide forecastBox" id="1"></div>
-                            <div class="col-2 mb-2 hide forecastBox" id="2"></div>
-                            <div class="col-2 mb-2 hide forecastBox" id="3"></div>
-                            <div class="col-2 mb-2 hide forecastBox" id="4"></div> 
+                            <div class="col-12 col-md-2 mb-2 hide forecastBox" id="0"></div>
+                            <div class="col-12 col-md-2 mb-2 hide forecastBox" id="1"></div>
+                            <div class="col-12 col-md-2 mb-2 hide forecastBox" id="2"></div>
+                            <div class="col-12 col-md-2 mb-2 hide forecastBox" id="3"></div>
+                            <div class="col-12 col-md-2 mb-2 hide forecastBox" id="4"></div> 
                             
                     </div>
                 </div>

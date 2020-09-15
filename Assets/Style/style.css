@@ -14,6 +14,8 @@ h3, h4, h5{
     opacity: .6;
 }
 
+
+
 .searchContainerEl, .resultContainerEl {
     background-color:rgba(77,96,101,.2);
 }
@@ -35,6 +37,7 @@ h3, h4, h5{
     border: 1px solid black;
     border-radius: 5px;
     background-color: skyblue;
+    opacity: .8;
     color: white;
     margin: 10px 5px;
 
