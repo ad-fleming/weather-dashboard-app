@@ -1,7 +1,7 @@
 # weather-dashboard-app
 This project combines the skills and techniques that we incorporated into our previous assignments in order to produce a functioning weather dashboard application. 
 
-In order to successfully complete this project, we needed to employ skills that we've been honing in __local storage__, __ajax calls__, __3rd party API__ and __DOM manipulation__. 
+In order to successfully complete this project, we needed to employ skills that we've been honing in __local storage__, __ajax calls__, __3rd party APIs__, __Server-Side APIs__ and __DOM manipulation__. 
 
 This was a challenging and rewarding project that allowed us to explore all of the above in attempts to make something useful to its users. 
 
